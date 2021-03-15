@@ -32,7 +32,9 @@ jobs:
 
           for commit in $(git log develop --reverse --author="lulu" --pretty=%H);
           do
+              echo "cherry pick"
               git cherry-pick $commit --strategy-option theirs
+              echo "git commit"
               git commit --allow-empty -m "[auto] apply custom changes from develop"
           done
 
